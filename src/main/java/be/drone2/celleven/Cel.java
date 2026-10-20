@@ -33,20 +33,38 @@ public class Cel implements Observer{
 
     public void leeftijdAanpassenNaVoortplanting(){
          int leeftijd = getLeeftijd();
-         setLeeftijd(leeftijd +1);
+         setLeeftijd(leeftijd + 1);
     }
 
 
 
     @Override
     public void update(Leefwereld leefwereld) {
-        
-        jaartjeOuder();
-        if (leeftijd < 6) {
-            Leefwereld.RASTER.setLevend(koppel, true);
-        } else {
-            Leefwereld.RASTER.setLevend(koppel, false);
-        }
+         jaartjeOuder();
+         int correctie =0;
+         if (Leefwereld.RASTER.getCellen().size() > 15) {
+            correctie = 1;
+         } 
+          if (Leefwereld.RASTER.getCellen().size() > 16) {
+            correctie = 2;
+         } 
+         if (Leefwereld.RASTER.getCellen().size() > 17) {
+            correctie = 3;
+         } 
+         if (Leefwereld.RASTER.getCellen().size() > 19) {
+            correctie = 5;
+         } 
+         if (Leefwereld.RASTER.getCellen().size() > 18) {
+            correctie = 4;
+         } 
+          if (Leefwereld.RASTER.getCellen().size() <= 15) {
+            correctie = 0;
+         } 
+
+    if (getLeeftijd() >= (6-correctie)) {
+        leefwereld.verwijderCel(this);
+    }
+      
     }
 
     

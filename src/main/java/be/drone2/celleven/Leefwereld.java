@@ -1,6 +1,9 @@
 package be.drone2.celleven;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public enum Leefwereld {
@@ -9,6 +12,23 @@ public enum Leefwereld {
     private final int lengte;
     private boolean[][] rasterveld;
     private final Set<Observer> observers = new HashSet<>();
+    private final Set<Cel> cellen = new HashSet<>();
+
+    public void voegCelToe(Cel cel) {
+        cellen.add(cel);
+        addObserver(cel);
+        setLevend(cel.getKoppel(), true);
+    }
+
+    public void verwijderCel(Cel cel) {
+        cellen.remove(cel);
+        removeObserver(cel);
+        setLevend(cel.getKoppel(), false);
+    }
+
+    public Set<Cel> getCellen() {
+        return Collections.unmodifiableSet(cellen);
+    }
 
     private Leefwereld(int lengte) {
         this.lengte = lengte;
@@ -40,13 +60,34 @@ public enum Leefwereld {
         observers.remove(observer);
     }
 
-    void notifyObservers() {
-        observers.forEach(observer -> observer.update(this));
-    }
+   void notifyObservers() {
 
-    void volgendeStap () {
-        System.out.println("hier is een cycle geeindigd!");
+    Set<Observer> kopie = new HashSet<>(observers);
+
+    kopie.forEach(observer -> observer.update(this));
+}
+
+    void volgendeStap() {
+
         notifyObservers();
+
+        CelCreatie creator = new CelCreatie();
+
+        List<Cel> lijst = new ArrayList<>(cellen);
+
+        for (int i = 0; i < lijst.size(); i++) {
+            for (int j = i + 1; j < lijst.size(); j++) {
+
+                Cel cel1 = lijst.get(i);
+                Cel cel2 = lijst.get(j);
+
+                if (creator.creatieVoorwaardenCheck(cel1, cel2)) {
+                    creator.maakNieuweCel(cel1, cel2);
+                    cel1.leeftijdAanpassenNaVoortplanting();
+                    cel2.leeftijdAanpassenNaVoortplanting();
+                }
+            }
+        }
     }
 
 }
