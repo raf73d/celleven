@@ -1,6 +1,6 @@
 package be.drone2.celleven;
 
-public class Cel {
+public class Cel implements Observer{
 
     private Koppel koppel;
     private int leeftijd;
@@ -24,6 +24,18 @@ public class Cel {
 
     public void setLeeftijd(int leeftijd) {
         this.leeftijd = leeftijd;
+    }
+
+    public void jaartjeOuder(){
+        int leeftijd = getLeeftijd();
+        setLeeftijd(leeftijd +1);
+    }
+
+
+
+    @Override
+    public void update(Leefwereld leefwereld) {
+        jaartjeOuder();
     }
 
     
