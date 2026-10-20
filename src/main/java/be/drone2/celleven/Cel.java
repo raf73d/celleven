@@ -31,11 +31,22 @@ public class Cel implements Observer{
         setLeeftijd(leeftijd +1);
     }
 
+    public void leeftijdAanpassenNaVoortplanting(){
+         int leeftijd = getLeeftijd();
+         setLeeftijd(leeftijd +1);
+    }
+
 
 
     @Override
     public void update(Leefwereld leefwereld) {
+        
         jaartjeOuder();
+        if (leeftijd < 6) {
+            Leefwereld.RASTER.setLevend(koppel, true);
+        } else {
+            Leefwereld.RASTER.setLevend(koppel, false);
+        }
     }
 
     
