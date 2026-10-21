@@ -1,10 +1,21 @@
 package be.drone2.celleven;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import be.StatPunt;
+
 @Component
 public class MyRunner implements CommandLineRunner {
+
+  private final static List<StatPunt> historiek = new ArrayList<>();
+
+     public static List<StatPunt> getHistoriek() {
+        return historiek;
+     }
 
     @Override
     public void run(String... args) throws Exception {
@@ -40,6 +51,7 @@ public class MyRunner implements CommandLineRunner {
           if (vorigGetal != aantalCellen) {System.out.println("alarm, aantal cellen is aangepast");}
           System.out.println("cycle: " + teller + " aantal: " + aantalCellen + " min: " + min + " max: " + max + " gemiddelde: " + gemiddelde);
         //   System.out.println(Thread.currentThread().getName());
+        historiek.add(new StatPunt(teller,aantalCellen,min,max,gemiddelde));
           if (aantalCellen == 0)  break;
     
             for (int j = 0; j < Leefwereld.RASTER.getLengte(); j++) {
