@@ -3,9 +3,9 @@ package be.drone2.celleven;
 public class Cel implements Observer{
 
     private Koppel koppel;
-    private int leeftijd;
+    private double leeftijd;
     
-    public Cel(Koppel koppel, int leeftijd) {
+    public Cel(Koppel koppel, double leeftijd) {
         this.koppel = koppel;
         this.leeftijd = leeftijd;
     }
@@ -18,54 +18,45 @@ public class Cel implements Observer{
         this.koppel = koppel;
     }
 
-    public int getLeeftijd() {
+    public double getLeeftijd() {
         return leeftijd;
     }
 
-    public void setLeeftijd(int leeftijd) {
+    public void setLeeftijd(double leeftijd) {
         this.leeftijd = leeftijd;
     }
 
     public void jaartjeOuder(){
-        int leeftijd = getLeeftijd();
-        setLeeftijd(leeftijd +1);
+        double leeftijd = getLeeftijd();
+        setLeeftijd(leeftijd + 0.8);
     }
 
     public void leeftijdAanpassenNaVoortplanting(){
-         int leeftijd = getLeeftijd();
-         setLeeftijd(leeftijd + 1);
+         double leeftijd = getLeeftijd();
+         setLeeftijd(leeftijd + 1.7);
     }
 
 
 
     @Override
-    public void update(Leefwereld leefwereld) {
+    public void update(Leefwereld leefwereld, int aantalCellenAanwezig) {
+      //  System.out.println(Thread.currentThread().getName());
          jaartjeOuder();
-         int correctie =0;
-         if (Leefwereld.RASTER.getCellen().size() > 15) {
-            correctie = 1;
-         } 
-          if (Leefwereld.RASTER.getCellen().size() > 16) {
-            correctie = 2;
-         } 
-         if (Leefwereld.RASTER.getCellen().size() > 17) {
-            correctie = 3;
-         } 
-         if (Leefwereld.RASTER.getCellen().size() > 19) {
-            correctie = 5;
-         } 
-         if (Leefwereld.RASTER.getCellen().size() > 18) {
-            correctie = 4;
-         } 
-          if (Leefwereld.RASTER.getCellen().size() <= 15) {
-            correctie = 0;
-         } 
+         double correctie =
+        aantalCellenAanwezig > 50 ? 4.9 :
+        aantalCellenAanwezig > 30 ? 4.8 :
+        aantalCellenAanwezig >= 28 ? 4.3 :
+        aantalCellenAanwezig > 22 ? 4.2 :
+        aantalCellenAanwezig > 20 ? 3.5 :
+        aantalCellenAanwezig > 6 ? 1 : 0;
 
     if (getLeeftijd() >= (6-correctie)) {
         leefwereld.verwijderCel(this);
     }
       
     }
+
+   
 
     
 

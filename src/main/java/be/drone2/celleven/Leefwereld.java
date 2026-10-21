@@ -3,6 +3,7 @@ package be.drone2.celleven;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -11,8 +12,8 @@ public enum Leefwereld {
 
     private final int lengte;
     private boolean[][] rasterveld;
-    private final Set<Observer> observers = new HashSet<>();
-    private final Set<Cel> cellen = new HashSet<>();
+    private final Set<Observer> observers = new LinkedHashSet<>();
+    private final Set<Cel> cellen = new LinkedHashSet<>();
 
     public void voegCelToe(Cel cel) {
         cellen.add(cel);
@@ -61,10 +62,9 @@ public enum Leefwereld {
     }
 
    void notifyObservers() {
-
-    Set<Observer> kopie = new HashSet<>(observers);
-
-    kopie.forEach(observer -> observer.update(this));
+     int aantalCellenAanwezig = cellen.size();
+    Set<Observer> kopie = new LinkedHashSet<>(observers);
+    kopie.forEach(observer -> observer.update(this, aantalCellenAanwezig));
 }
 
     void volgendeStap() {
