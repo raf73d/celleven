@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import be.StatPunt;
-
 @Service
 public class SimulatieService {
     private final List<StatPunt> historiek = new ArrayList<>();
