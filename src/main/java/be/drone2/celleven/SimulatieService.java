@@ -11,7 +11,23 @@ import be.StatPunt;
 public class SimulatieService {
     private final List<StatPunt> historiek = new ArrayList<>();
 
+    public void updatevpc (double vpc){
+        Cel.setVerouderingPerCycle(vpc);
+    }
+
+    public void updatevpv (double vpv) {
+        Cel.setVerouderingPerVoortplanting(vpv);
+    }
+
+    public void updatemaxleeftijd (double maxleeftijd) {
+        Cel.setMaxLeeftijd(maxleeftijd);
+    }
+
     public List<StatPunt> getHistoriek() {
+        System.out.println("VPC = " + Cel.getVerouderingPerCycle());
+        historiek.clear();
+      //  Leefwereld.RASTER.getCellen().clear();
+           Leefwereld.RASTER.purgeCellen(Leefwereld.RASTER.getCellen());
         Koppel koppel1 = new Koppel(0, 0);
         var koppel2 = new Koppel(1, 0);
         var koppel3 = new Koppel(0, 1);

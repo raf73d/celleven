@@ -1,7 +1,6 @@
 package be.drone2.celleven;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,7 +25,11 @@ public enum Leefwereld {
     }
 
     public Set<Cel> getCellen() {
-        return Collections.unmodifiableSet(cellen);
+        return cellen;
+    }
+
+    public void purgeCellen (Set<Cel> cellen){
+        cellen.clear();
     }
 
     private Leefwereld(int lengte) {

@@ -4,11 +4,52 @@ public class Cel implements Observer{
 
     private Koppel koppel;
     private double leeftijd;
+    private static double verouderingPerCycle = 1.7;
+    private static double verouderingPerVoortplanting = 0.8;
+    private static double maxLeeftijd = 6.0;
     
     public Cel(Koppel koppel, double leeftijd) {
         this.koppel = koppel;
         this.leeftijd = leeftijd;
     }
+
+    
+
+    public static double getVerouderingPerCycle() {
+        return verouderingPerCycle;
+    }
+
+
+
+    public static void setVerouderingPerCycle(double verouderingPerCycle) {
+        Cel.verouderingPerCycle = verouderingPerCycle;
+    }
+
+
+
+    public static double getVerouderingPerVoortplanting() {
+        return verouderingPerVoortplanting;
+    }
+
+
+
+    public static void setVerouderingPerVoortplanting(double verouderingPerVoortplanting) {
+        Cel.verouderingPerVoortplanting = verouderingPerVoortplanting;
+    }
+
+
+
+    public static double getMaxLeeftijd() {
+        return maxLeeftijd;
+    }
+
+
+
+    public  static void setMaxLeeftijd(double maxLeeftijd) {
+        Cel.maxLeeftijd = maxLeeftijd;
+    }
+
+
 
     public Koppel getKoppel() {
         return koppel;
@@ -28,12 +69,12 @@ public class Cel implements Observer{
 
     public void jaartjeOuder(){
         double leeftijd = getLeeftijd();
-        setLeeftijd(leeftijd + 0.8);
+        setLeeftijd(leeftijd + getVerouderingPerCycle());
     }
 
     public void leeftijdAanpassenNaVoortplanting(){
          double leeftijd = getLeeftijd();
-         setLeeftijd(leeftijd + 1.7);
+         setLeeftijd(leeftijd + getVerouderingPerVoortplanting());
     }
 
 
@@ -50,7 +91,7 @@ public class Cel implements Observer{
         aantalCellenAanwezig > 20 ? 3.5 :
         aantalCellenAanwezig > 6 ? 1 : 0;
 
-    if (getLeeftijd() >= (6-correctie)) {
+    if (getLeeftijd() >= (getMaxLeeftijd()-correctie)) {
         leefwereld.verwijderCel(this);
     }
       
