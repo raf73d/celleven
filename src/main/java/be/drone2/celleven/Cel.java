@@ -67,23 +67,8 @@ public class Cel implements Observer {
     public void update(Leefwereld leefwereld, int aantalCellenAanwezig) {
         // System.out.println(Thread.currentThread().getName());
         jaartjeOuder();
-        double correctie = aantalCellenAanwezig > 90 ? 4.7
-                : aantalCellenAanwezig > 85 ? 4.2
-                        : aantalCellenAanwezig > 80 ? 4.1
-                                : aantalCellenAanwezig > 70 ? 3.8
-                                        : aantalCellenAanwezig > 60 ? 3.5
-                                                : aantalCellenAanwezig > 50 ? 3.0
-                                                        : aantalCellenAanwezig > 47 ? 2.9
-                                                                : aantalCellenAanwezig > 43 ? 2.8
-                                                                        : aantalCellenAanwezig > 40 ? 2.5
-                                                                                : aantalCellenAanwezig > 30 ? 2.0
-                                                                                        : aantalCellenAanwezig > 20
-                                                                                                ? 1.6
-                                                                                                : aantalCellenAanwezig > 10
-                                                                                                        ? 1.5
-                                                                                                        : aantalCellenAanwezig > 6
-                                                                                                                ? 0.8
-                                                                                                                : 0;
+         double correctie = aantalCellenAanwezig / 18.0;
+         correctie = Math.min(correctie, 4.8);                                                  
 
         if (getLeeftijd() >= (Cel.getMaxLeeftijd() - correctie)) {
             leefwereld.verwijderCel(this);
