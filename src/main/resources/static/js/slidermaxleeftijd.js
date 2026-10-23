@@ -22,6 +22,4 @@ slider.addEventListener("change", async () => {
   });
 });
 
-function controleerKnop() {
-  startKnop.disabled = !(vpcAangepast && maxLeeftijdAangepast && vpvAangepast);
-}
+

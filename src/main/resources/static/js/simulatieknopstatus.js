@@ -5,7 +5,7 @@ export const aangepast = {
 };
 
 export function controleerKnop() {
-
+console.log(aangepast);
     const startKnop =
         document.getElementById("startKnop");
 
