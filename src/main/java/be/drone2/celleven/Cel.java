@@ -84,11 +84,16 @@ public class Cel implements Observer{
       //  System.out.println(Thread.currentThread().getName());
          jaartjeOuder();
          double correctie =
-        aantalCellenAanwezig > 50 ? 4.9 :
-        aantalCellenAanwezig > 30 ? 4.8 :
-        aantalCellenAanwezig >= 28 ? 4.3 :
-        aantalCellenAanwezig > 22 ? 4.2 :
-        aantalCellenAanwezig > 20 ? 3.5 :
+        aantalCellenAanwezig > 90 ? 4.9 :
+        aantalCellenAanwezig > 85 ? 4.8 :
+        aantalCellenAanwezig >= 80 ? 4.3 :
+        aantalCellenAanwezig > 70 ? 4.2 :
+        aantalCellenAanwezig > 60 ? 3.5 :
+         aantalCellenAanwezig > 50 ? 3.0 :
+        aantalCellenAanwezig > 40 ? 2.5 :
+        aantalCellenAanwezig >= 30 ? 2.0 :
+        aantalCellenAanwezig > 20 ? 1.6 :
+        aantalCellenAanwezig > 10 ? 1.5 :
         aantalCellenAanwezig > 6 ? 1 : 0;
 
     if (getLeeftijd() >= (getMaxLeeftijd()-correctie)) {
