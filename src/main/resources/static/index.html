@@ -10,33 +10,89 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/grafiek.js" type="module"></script>
+    <script src="js/slidervpc.js" type="module"></script>
+    <script src="js/slidervpv.js" type="module"></script>
+    <script src="js/slidermaxleeftijd.js" type="module"></script>
   </head>
   <body>
     <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h1>Celleven, een simulatie</h1>
-        Een kolonie celletjes levend op een veld van tien op tien. De kolonie
-        begint altijd met 4 cellen. Ze leven een aantal cycli en bij elkaar
-        liggende cellen maken een nieuwe cel aan als er plaats is in de
-        nabijheid. Helaas moeten ze daarbij dan een beetje levensduurte
-        inboeten. Afhankelijk van de ingegeven parameters zal de kolonie al dan
-        niet floreren...
+      <div class="row">
+        <div class="col-12">
+          <h1>Celleven, een simulatie</h1>
+          Een kolonie celletjes levend op een veld van tien op tien. De kolonie
+          begint altijd met 4 cellen. Ze leven een aantal cycli en bij elkaar
+          liggende cellen maken een nieuwe cel aan als er plaats is in de
+          nabijheid. Helaas moeten ze daarbij dan een beetje levensduurte
+          inboeten. Afhankelijk van de ingegeven parameters zal de kolonie al
+          dan niet floreren...
+          <p></p>
+        </div>
       </div>
-    </div>
-    <div class="'row">
-      <div class="col-1"></div>
-      <div class="col-10">
-      <canvas id="myChart"></canvas> </div>
-      <div class="col-1"></div>
-    </div>
-    <div id="storingChart" class="fout text-danger mt-2" hidden>
-      Storing, contacteer a moeder.
-    </div>
-    <div id="mededelingChart" class="mededeling text-white-50 mt-2" hidden>
-      geen resultaat gevonden.
-    </div>
-    <div id="statusChart" class="status text-info mt-2" hidden>bezig...</div>
+      <div class="row">
+        <div class="col-4">
+          <label for="vpc"> Veroudering per cycle: </label>
+
+          <input
+            type="range"
+            id="vpc"
+            min="0.5"
+            max="2.5"
+            step="0.01"
+            value="1.7"
+          />
+
+          <span id="waarde">1.7</span>
+        </div>
+        <div class="col-4">
+          <label for="vpv"> Veroudering per voortplanting: </label>
+
+          <input
+            type="range"
+            id="vpv"
+            min="0.5"
+            max="2.5"
+            step="0.01"
+            value="0.8"
+          />
+
+          <span id="waardevpv">0.8</span>
+        </div>
+        <div class="col-4">
+          <label for="maxleeftijd"> Maximum leeftijd: </label>
+
+          <input
+            type="range"
+            id="maxleeftijd"
+            min="0.5"
+            max="15.0"
+            step="0.1"
+            value="6.0"
+          />
+
+          <span id="waardemaxleeftijd">6.0</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2">
+          <button class="btn btn-primary" id="startKnop">
+            Start simulatie
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <canvas id="myChart"></canvas>
+        </div>
+        <div class="col-1"></div>
+      </div>
+      <div id="storingChart" class="fout text-danger mt-2" hidden>
+        Storing, contacteer a moeder.
+      </div>
+      <div id="mededelingChart" class="mededeling text-white-50 mt-2" hidden>
+        geen resultaat gevonden.
+      </div>
+      <div id="statusChart" class="status text-info mt-2" hidden>bezig...</div>
     </div>
   </body>
 </html>

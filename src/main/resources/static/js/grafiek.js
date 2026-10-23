@@ -1,11 +1,23 @@
 "use strict";
 import { byId, toon, verberg, setText } from "./util.js";
+
+let chart;
 verberg("myChart", "statusChart");
 toon("statusChart");
-toongrafiek();
+
+document.addEventListener("DOMContentLoaded", () => {
+    const startKnop = document.getElementById("startKnop");
+
+    startKnop.addEventListener("click", startSimulatie);
+});
+
+async function startSimulatie() {
+    toongrafiek();
+}
+
 
 async function toongrafiek() {
-  const response = await fetch(`http://localhost:8080/simulatie/statistieken`);
+  const response = await fetch("http://localhost:8080/simulatie/statistieken");
 
   if (response.ok) {
     const ranglijst = await response.json();
@@ -16,8 +28,10 @@ async function toongrafiek() {
       verberg("statusChart");
       toon("myChart");
       const ctx = byId("myChart");
-
-      new Chart(ctx, {
+if (chart) {
+    chart.destroy();
+}
+      chart = new Chart(ctx, {
         type: "line",
         data: {
           labels: ranglijst.map((r) => r.cycle),

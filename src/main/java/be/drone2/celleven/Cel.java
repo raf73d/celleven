@@ -4,9 +4,9 @@ public class Cel implements Observer{
 
     private Koppel koppel;
     private double leeftijd;
-    private static double verouderingPerCycle = 1.7;
-    private static double verouderingPerVoortplanting = 0.8;
-    private static double maxLeeftijd = 6.0;
+    private static double verouderingPerCycle;
+    private static double verouderingPerVoortplanting;
+    private static double maxLeeftijd;
     
     public Cel(Koppel koppel, double leeftijd) {
         this.koppel = koppel;
