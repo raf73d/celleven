@@ -1,18 +1,42 @@
 <!doctype html>
 <html lang="nl">
   <head>
-    <title>Pizza Luigi</title>
-    <link rel="icon" href="images/luigi.ico" />
-    <link rel="stylesheet" href="css/luigi.css" />
+    <title>Celleven</title>
+    <link rel="icon" href="images/drone.png" />
+    <link rel="stylesheet" href="css/celleven.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/grafiek.js" type="module"></script>
   </head>
   <body>
-    <h1>Luigi</h1>
-    <nav>
-      <ul>
-        <li>
-          <a href="aantal.html">Aantal pizza's</a>
-        </li>
-      </ul>
-    </nav>
+    <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Celleven, een simulatie</h1>
+        Een kolonie celletjes levend op een veld van tien op tien. De kolonie
+        begint altijd met 4 cellen. Ze leven een aantal cycli en bij elkaar
+        liggende cellen maken een nieuwe cel aan als er plaats is in de
+        nabijheid. Helaas moeten ze daarbij dan een beetje levensduurte
+        inboeten. Afhankelijk van de ingegeven parameters zal de kolonie al dan
+        niet floreren...
+      </div>
+    </div>
+    <div class="'row">
+      <div class="col-1"></div>
+      <div class="col-10">
+      <canvas id="myChart"></canvas> </div>
+      <div class="col-1"></div>
+    </div>
+    <div id="storingChart" class="fout text-danger mt-2" hidden>
+      Storing, contacteer a moeder.
+    </div>
+    <div id="mededelingChart" class="mededeling text-white-50 mt-2" hidden>
+      geen resultaat gevonden.
+    </div>
+    <div id="statusChart" class="status text-info mt-2" hidden>bezig...</div>
+    </div>
   </body>
 </html>

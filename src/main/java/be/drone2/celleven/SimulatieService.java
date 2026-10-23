@@ -25,7 +25,7 @@ public class SimulatieService {
         System.out.println("VPC = " + Cel.getVerouderingPerCycle());
         historiek.clear();
       //  Leefwereld.RASTER.getCellen().clear();
-           Leefwereld.RASTER.purgeCellen(Leefwereld.RASTER.getCellen());
+           Leefwereld.RASTER.reset();
         Koppel koppel1 = new Koppel(0, 0);
         var koppel2 = new Koppel(1, 0);
         var koppel3 = new Koppel(0, 1);

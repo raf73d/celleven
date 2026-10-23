@@ -32,6 +32,18 @@ public enum Leefwereld {
         cellen.clear();
     }
 
+    public void reset() {
+
+    cellen.clear();
+    observers.clear();
+
+    for (int x = 0; x < rasterveld.length; x++) {
+        for (int y = 0; y < rasterveld[x].length; y++) {
+            rasterveld[x][y] = false;
+        }
+    }
+}
+
     private Leefwereld(int lengte) {
         this.lengte = lengte;
         this.rasterveld = new boolean[lengte][lengte];
