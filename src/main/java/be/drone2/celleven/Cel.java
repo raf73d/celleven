@@ -55,12 +55,12 @@ public class Cel implements Observer {
 
     public void jaartjeOuder() {
         double leeftijd = getLeeftijd();
-        setLeeftijd(leeftijd + getVerouderingPerCycle());
+        setLeeftijd(leeftijd + Cel.getVerouderingPerCycle());
     }
 
     public void leeftijdAanpassenNaVoortplanting() {
         double leeftijd = getLeeftijd();
-        setLeeftijd(leeftijd + getVerouderingPerVoortplanting());
+        setLeeftijd(leeftijd + Cel.getVerouderingPerVoortplanting());
     }
 
     @Override
@@ -85,7 +85,7 @@ public class Cel implements Observer {
                                                                                                                 ? 0.8
                                                                                                                 : 0;
 
-        if (getLeeftijd() >= (getMaxLeeftijd() - correctie)) {
+        if (getLeeftijd() >= (Cel.getMaxLeeftijd() - correctie)) {
             leefwereld.verwijderCel(this);
         }
 
