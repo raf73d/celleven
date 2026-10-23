@@ -17,7 +17,7 @@ async function startSimulatie() {
 
 
 async function toongrafiek() {
-  const response = await fetch("http://localhost:8080/simulatie/statistieken");
+  const response = await fetch(`/simulatie/statistieken`);
 
   if (response.ok) {
     const ranglijst = await response.json();

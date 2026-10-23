@@ -13,7 +13,7 @@ slider.addEventListener("input", () => {
 slider.addEventListener("change", async () => {
 
     await fetch(
-        "http://localhost:8080/simulatie/verouderingpercycle",
+        `/simulatie/verouderingpercycle`,
         {
             method: "PUT",
             headers: {

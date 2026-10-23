@@ -12,7 +12,7 @@ slider.addEventListener("input", () => {
 slider.addEventListener("change", async () => {
 
     await fetch(
-        "http://localhost:8080/simulatie/maxleeftijd",
+        `/simulatie/maxleeftijd`,
         {
             method: "PUT",
             headers: {
