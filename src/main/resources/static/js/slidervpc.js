@@ -1,5 +1,8 @@
 "use strict";
-
+import {
+    aangepast,
+    controleerKnop
+} from "./simulatieknopstatus.js";
 console.log("slider geladen");
 
 const slider = document.getElementById("vpc");
@@ -11,7 +14,9 @@ slider.addEventListener("input", () => {
 });
 
 slider.addEventListener("change", async () => {
+aangepast.vpc = true;
 
+    controleerKnop();
     await fetch(
         `/simulatie/verouderingpercycle`,
         {

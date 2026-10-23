@@ -1,7 +1,10 @@
 "use strict";
 
 console.log("slider geladen");
-
+import {
+    aangepast,
+    controleerKnop
+} from "./simulatieknopstatus.js";
 const slider = document.getElementById("vpv");
 const waarde = document.getElementById("waardevpv");
 
@@ -11,7 +14,9 @@ slider.addEventListener("input", () => {
 });
 
 slider.addEventListener("change", async () => {
+aangepast.vpv = true;
 
+    controleerKnop();
     await fetch(
         `/simulatie/verouderingpervoortplanting`,
         {
