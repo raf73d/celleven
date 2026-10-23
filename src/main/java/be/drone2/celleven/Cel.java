@@ -67,9 +67,9 @@ public class Cel implements Observer {
     public void update(Leefwereld leefwereld, int aantalCellenAanwezig) {
         // System.out.println(Thread.currentThread().getName());
         jaartjeOuder();
-        double correctie = aantalCellenAanwezig > 90 ? 4.1
-                : aantalCellenAanwezig > 85 ? 4.0
-                        : aantalCellenAanwezig > 80 ? 3.9
+        double correctie = aantalCellenAanwezig > 90 ? 4.7
+                : aantalCellenAanwezig > 85 ? 4.2
+                        : aantalCellenAanwezig > 80 ? 4.1
                                 : aantalCellenAanwezig > 70 ? 3.8
                                         : aantalCellenAanwezig > 60 ? 3.5
                                                 : aantalCellenAanwezig > 50 ? 3.0
