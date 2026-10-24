@@ -3,6 +3,8 @@ package be.drone2.celleven;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -61,7 +63,11 @@ public class SimulatieService {
             if (aantalCellen > max)
                 max = aantalCellen;
             historiek.add(new StatPunt(teller, aantalCellen, min, max, gemiddelde));
-            kolonie.add(new Cyclepunt(teller, new HashSet<>(Leefwereld.RASTER.getCellen())));
+            Set<Celpositie> celposities = Leefwereld.RASTER.getCellen()
+            .stream()
+            .map(cel -> new Celpositie(cel.getKoppel().getXPositie(), cel.getKoppel().getYPositie()))
+            .collect(Collectors.toSet());
+            kolonie.add(new Cyclepunt(teller, new HashSet<>(celposities)));
             if (aantalCellen == 0)
                 break;
             Leefwereld.RASTER.volgendeStap();
