@@ -11,7 +11,7 @@ public class Koppel {
         this.yPositie = yPositie;
     }
 
-    public int getxPositie() {
+    public int getXPositie() {
         return xPositie;
     }
 
@@ -19,7 +19,7 @@ public class Koppel {
         this.xPositie = xPositie;
     }
 
-    public int getyPositie() {
+    public int getYPositie() {
         return yPositie;
     }
 
