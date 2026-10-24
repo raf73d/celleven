@@ -8,10 +8,10 @@ public class CelCreatie {
     public boolean creatieVoorwaardenCheck(Cel cel1, Cel cel2) {
         double leeftijdcel1 = cel1.getLeeftijd();
         double leeftijdcel2 = cel2.getLeeftijd();
-        int x1 = cel1.getKoppel().getxPositie();
-        int y1 = cel1.getKoppel().getyPositie();
-        int x2 = cel2.getKoppel().getxPositie();
-        int y2 = cel2.getKoppel().getyPositie();
+        int x1 = cel1.getKoppel().getXPositie();
+        int y1 = cel1.getKoppel().getYPositie();
+        int x2 = cel2.getKoppel().getXPositie();
+        int y2 = cel2.getKoppel().getYPositie();
         if ((Math.abs(x1 - x2) <= 1) && (Math.abs(y1 - y2) <= 1) && leeftijdcel1 >= 1 && leeftijdcel2 >= 1 && leeftijdcel1 < 6 && leeftijdcel2 < 6) {
 
             return true;
@@ -23,11 +23,11 @@ public class CelCreatie {
 
     public void maakNieuweCel(Cel cel1, Cel cel2) {
 
-        int x1 = cel1.getKoppel().getxPositie();
-        int y1 = cel1.getKoppel().getyPositie();
+        int x1 = cel1.getKoppel().getXPositie();
+        int y1 = cel1.getKoppel().getYPositie();
 
-        int x2 = cel2.getKoppel().getxPositie();
-        int y2 = cel2.getKoppel().getyPositie();
+        int x2 = cel2.getKoppel().getXPositie();
+        int y2 = cel2.getKoppel().getYPositie();
 
         int grootsteX = Math.max(x1, x2) + 1;
         int grootsteY = Math.max(y1, y2) + 1;

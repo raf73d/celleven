@@ -59,11 +59,11 @@ public enum Leefwereld {
     }
 
     public boolean isLevend(Koppel koppel) {
-        return rasterveld[koppel.getxPositie()][koppel.getyPositie()];
+        return rasterveld[koppel.getXPositie()][koppel.getYPositie()];
     }
 
     public void setLevend(Koppel koppel, boolean status) {
-        rasterveld[koppel.getxPositie()][koppel.getyPositie()] = status;
+        rasterveld[koppel.getXPositie()][koppel.getYPositie()] = status;
     }
 
     void addObserver(Observer observer) {
