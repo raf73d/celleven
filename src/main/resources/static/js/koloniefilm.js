@@ -15,10 +15,10 @@ function teken(cyclus) {
         ctx.fillStyle = "limegreen";
 
         ctx.fillRect(
-            cel.x * 50,
-            cel.y * 50,
-            48,
-            48
+            cel.x * 20,
+            cel.y * 20,
+            18,
+            18
         );
     });
 }
