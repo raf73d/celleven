@@ -6,59 +6,59 @@ verberg("myChart", "statusChart");
 toon("statusChart");
 
 document.addEventListener("DOMContentLoaded", () => {
-    const startKnop = document.getElementById("startKnop");
+  const startKnop = document.getElementById("startKnop");
 
-    startKnop.addEventListener("click", startSimulatie);
+  startKnop.addEventListener("click", startSimulatie);
 });
 
 async function startSimulatie() {
-   await toongrafiek();
-    const response =
-        await fetch("/simulatie/kolonie");
+  await toongrafiek();
+  const response = await fetch("/simulatie/kolonie");
 
-    const kolonies = await response.json();
+  const kolonies = await response.json();
 
-    startAnimatie(kolonies);
+  startAnimatie(kolonies);
 }
 let timerId = null;
 
 function startAnimatie(kolonies) {
+  const canvas = document.getElementById("wereld");
+  const ctx = canvas.getContext("2d");
 
-    const canvas = document.getElementById("wereld");
-    const ctx = canvas.getContext("2d");
+  let index = 0;
 
-    let index = 0;
+  // Vorige animatie stoppen
+  if (timerId) {
+    clearInterval(timerId);
+  }
 
-    // Vorige animatie stoppen
-    if (timerId) {
-        clearInterval(timerId);
+  timerId = setInterval(() => {
+    const cyclus = kolonies[index];
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let x = 0; x < 10; x++) {
+      for (let y = 0; y < 10; y++) {
+        ctx.strokeStyle = "#cccccc";
+
+        ctx.strokeRect(x * 50, y * 50, 50, 50);
+      }
     }
 
-    timerId = setInterval(() => {
+    cyclus.cellenPosities.forEach((cel) => {
+      ctx.fillStyle = "limegreen";
 
-        const cyclus = kolonies[index];
+      ctx.fillRect(cel.x * 50, cel.y * 50, 48, 48);
+    });
 
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    index++;
 
-        cyclus.cellenPosities.forEach(cel => {
-
-            ctx.fillStyle = "limegreen";
-
-            ctx.fillRect(
-                cel.x * 50,
-                cel.y * 50,
-                48,
-                48
-            );
-        });
-
-        index++;
-
-        if (index >= kolonies.length) {
-            clearInterval(timerId);
-        }
-
-    }, 300);
+    if (index >= kolonies.length) {
+      clearInterval(timerId);
+    }
+  }, 300);
 }
 
 async function toongrafiek() {
@@ -73,9 +73,9 @@ async function toongrafiek() {
       verberg("statusChart");
       toon("myChart");
       const ctx = byId("myChart");
-if (chart) {
-    chart.destroy();
-}
+      if (chart) {
+        chart.destroy();
+      }
       chart = new Chart(ctx, {
         type: "line",
         data: {
