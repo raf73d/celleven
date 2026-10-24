@@ -12,9 +12,53 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function startSimulatie() {
-    toongrafiek();
-}
+    const response =
+        await fetch("/simulatie/kolonie");
 
+    const kolonies = await response.json();
+
+    startAnimatie(kolonies);
+}
+let timerId = null;
+
+function startAnimatie(kolonies) {
+
+    const canvas = document.getElementById("wereld");
+    const ctx = canvas.getContext("2d");
+
+    let index = 0;
+
+    // Vorige animatie stoppen
+    if (timerId) {
+        clearInterval(timerId);
+    }
+
+    timerId = setInterval(() => {
+
+        const cyclus = kolonies[index];
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        cyclus.cellenPosities.forEach(cel => {
+
+            ctx.fillStyle = "limegreen";
+
+            ctx.fillRect(
+                cel.x * 50,
+                cel.y * 50,
+                48,
+                48
+            );
+        });
+
+        index++;
+
+        if (index >= kolonies.length) {
+            clearInterval(timerId);
+        }
+
+    }, 300);
+}
 
 async function toongrafiek() {
   const response = await fetch(`/simulatie/statistieken`);
