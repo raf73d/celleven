@@ -24,6 +24,11 @@ public List<StatPunt> statistieken() {
     return simulatieService.getHistoriek();
 } 
 
+  @GetMapping("/kolonie")
+  public List<Cyclepunt> kolonie(){
+    return simulatieService.getKolonie();
+  }
+
 @PutMapping ("/verouderingpercycle")
 void updatevpc (@RequestBody double vpc){
     simulatieService.updatevpc (vpc);
