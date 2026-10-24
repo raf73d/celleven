@@ -34,29 +34,24 @@ function startAnimatie(kolonies) {
 
   timerId = setInterval(() => {
     const cyclus = kolonies[index];
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-ctx.fillStyle = "black";
-ctx.font = "20px Arial";
-ctx.fillText(
-    `Cycle ${cyclus.cycle}`,
-    10,
-    25
-);
+    ctx.fillStyle = "#f2f2f2";
+    ctx.fillRect(0, 0, canvas.width, 40);
+    ctx.fillStyle = "black";
+    ctx.font = "20px Arial";
+    ctx.fillText(`Cycle ${cyclus.cycle}`, 10, 25);
     for (let x = 0; x < 10; x++) {
       for (let y = 0; y < 10; y++) {
         ctx.strokeStyle = "#cccccc";
 
-        ctx.strokeRect(x * 50, y * 50, 50, 50);
+        ctx.strokeRect(x * 50, y * 50 + 40, 50, 50);
       }
     }
 
     cyclus.cellenPosities.forEach((cel) => {
       ctx.fillStyle = "limegreen";
 
-      ctx.fillRect(cel.x * 50, cel.y * 50, 48, 48);
+      ctx.fillRect(cel.x * 50, cel.y * 50 + 40, 48, 48);
     });
 
     index++;
