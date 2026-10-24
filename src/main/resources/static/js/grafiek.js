@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function startSimulatie() {
+   await toongrafiek();
     const response =
         await fetch("/simulatie/kolonie");
 
