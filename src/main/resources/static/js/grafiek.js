@@ -38,7 +38,13 @@ function startAnimatie(kolonies) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+ctx.fillStyle = "black";
+ctx.font = "20px Arial";
+ctx.fillText(
+    `Cycle ${cyclus.cycle}`,
+    10,
+    25
+);
     for (let x = 0; x < 10; x++) {
       for (let y = 0; y < 10; y++) {
         ctx.strokeStyle = "#cccccc";
