@@ -44,14 +44,14 @@ function startAnimatie(kolonies) {
       for (let y = 0; y < 10; y++) {
         ctx.strokeStyle = "#cccccc";
 
-        ctx.strokeRect(x * 50, y * 50 + 40, 50, 50);
+        ctx.strokeRect(x * 30, y * 30 + 40, 30, 30);
       }
     }
 
     cyclus.cellenPosities.forEach((cel) => {
       ctx.fillStyle = "limegreen";
 
-      ctx.fillRect(cel.x * 50, cel.y * 50 + 40, 48, 48);
+      ctx.fillRect(cel.x * 30 + 2, cel.y * 30 + 42, 26, 26);
     });
 
     index++;
