@@ -12,7 +12,8 @@ public class CelCreatie {
         int y1 = cel1.getKoppel().getYPositie();
         int x2 = cel2.getKoppel().getXPositie();
         int y2 = cel2.getKoppel().getYPositie();
-        if ((Math.abs(x1 - x2) <= 1) && (Math.abs(y1 - y2) <= 1) && leeftijdcel1 >= 1 && leeftijdcel2 >= 1 && leeftijdcel1 < 6 && leeftijdcel2 < 6) {
+        if ((Math.abs(x1 - x2) <= 1) && (Math.abs(y1 - y2) <= 1) && leeftijdcel1 >= 1 && leeftijdcel2 >= 1 
+        && leeftijdcel1 <= Cel.getMaxLeeftijd()-1 && leeftijdcel2 <= Cel.getMaxLeeftijd()-1) {
 
             return true;
 
