@@ -35,10 +35,10 @@ public class SimulatieService {
         historiek.clear();
       //  Leefwereld.RASTER.getCellen().clear();
            Leefwereld.RASTER.reset();
-        Koppel koppel1 = new Koppel(5, 5);
-        var koppel2 = new Koppel(6, 5);
-        var koppel3 = new Koppel(5, 6);
-        var koppel4 = new Koppel(6, 6);
+        Koppel koppel1 = new Koppel(4, 4);
+        var koppel2 = new Koppel(5, 4);
+        var koppel3 = new Koppel(4, 5);
+        var koppel4 = new Koppel(5, 5);
         Cel cel1 = new Cel(koppel1, 1);
         var cel2 = new Cel(koppel2, 1);
         var cel3 = new Cel(koppel3, 1);
