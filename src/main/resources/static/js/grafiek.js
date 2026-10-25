@@ -36,10 +36,11 @@ function startAnimatie(kolonies) {
     const cyclus = kolonies[index];
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#f2f2f2";
-    ctx.fillRect(0, 0, canvas.width, 40);
+   ctx.fillRect(0, 0, 300, 40);
     ctx.fillStyle = "black";
     ctx.font = "20px Arial";
-    ctx.fillText(`Cycle ${cyclus.cycle}`, 10, 25);
+    ctx.textAlign = "center";
+    ctx.fillText(`Cycle ${cyclus.cycle}`, 150, 25);
     for (let x = 0; x < 10; x++) {
       for (let y = 0; y < 10; y++) {
         ctx.strokeStyle = "#cccccc";
