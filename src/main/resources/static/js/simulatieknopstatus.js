@@ -1,3 +1,5 @@
+import { byId, toon, verberg, setText } from "./util.js";
+
 export const aangepast = {
     vpc: false,
     maxLeeftijd: false,
@@ -7,9 +9,16 @@ export const aangepast = {
 export function controleerKnop() {
 console.log(aangepast);
     const startKnop =
-        document.getElementById("startKnop");
+        byId("startKnop");
 
-    startKnop.disabled =
-        !Object.values(aangepast)
-               .every(v => v);
+    const enabled =
+        Object.values(aangepast).every(v => v);
+
+    startKnop.disabled = !enabled;
+
+    if (enabled) {
+        verberg("knopStatus");
+    } else {
+        toon("knopStatus");
+    }
 }

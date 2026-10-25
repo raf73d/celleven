@@ -3,7 +3,7 @@ import { byId, toon, verberg, setText } from "./util.js";
 
 let chart;
 verberg("myChart", "statusChart");
-toon("statusChart");
+//toon("statusChart");
 
 document.addEventListener("DOMContentLoaded", () => {
   const startKnop = document.getElementById("startKnop");
@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function startSimulatie() {
+  toon("statusChart")
   await toongrafiek();
   const response = await fetch("/simulatie/kolonie");
 
