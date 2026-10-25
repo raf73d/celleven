@@ -67,8 +67,8 @@ public class Cel implements Observer {
     public void update(Leefwereld leefwereld, int aantalCellenAanwezig) {
         // System.out.println(Thread.currentThread().getName());
         jaartjeOuder();
-         double correctie = aantalCellenAanwezig / 15.0;
-         correctie = Math.min(correctie, 5.0);                                                  
+         double correctie = aantalCellenAanwezig / 14.0;
+         correctie = Math.min(correctie, Cel.getMaxLeeftijd()-1);                                                  
 
         if (getLeeftijd() >= (Cel.getMaxLeeftijd() - correctie)) {
             leefwereld.verwijderCel(this);
